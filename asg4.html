@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Assignment 4</title>
+        <script src="lib/cuon-matrix-cse160.js"></script>
+        <script src="lib/cuon-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script> 
+        <script src="lib/webgl-utils.js"></script>
+        
+        <script src="Model.js"></script> 
+        <script src="Cube.js"></script>
+        <script src="Sphere.js"></script>
+        <script src="Camera.js"></script>
+        <script src="asg4.js"></script>
+          
+    </head>
+    
+    <body onload="main()">
+        <canvas id = "webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+        </canvas>
+        
+        Use WASD controls to move forward, left, backward, and right respectively. 
+        <br>
+        Use Q to pan left and E to pan right.
+        <br><br>
+
+        Normal
+        <button type="button" id = "normalOn">ON</button>
+        <button type="button" id = "normalOff">OFF</button>  
+        <br><br>
+
+        Lighting: 
+        <button type="button" id="lightingOn">ON</button>
+        <button type="button" id="lightingOff">OFF</button>
+
+        <br><br>
+        Light Position:
+        X <input type="range" min="-5" max="5" value="0" step="0.1" id="lightX">
+        Y <input type="range" min="-5" max="5" value="1" step="0.1" id="lightY">
+        Z <input type="range" min="-5" max="5" value="1" step="0.1" id="lightZ">
+        
+        <br> <br>
+        Light Color:
+        R <input type="range" min="0" max="1" value="1" step="0.1" id="lightR">
+        G <input type="range" min="0" max="1" value="1" step="0.1" id="lightG">
+        B <input type="range" min="0" max="1" value="1" step="0.1" id="lightB">
+        
+    </body>
+
+</html>
