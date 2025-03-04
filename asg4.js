@@ -64,7 +64,7 @@ var FS = `
             }
             // Calculate light effect even in normal mode
             vec3 l = normalize(u_lightLocation - worldPos.xyz);
-            float lightEffect = max(dot(n, l), 0.2); // Minimum 20% brightness
+            float lightEffect = max(dot(n, l), 0.5); // Minimum 20% brightness
             
             vec3 normalColor = (n + 1.0)/2.0 * lightEffect;
             
