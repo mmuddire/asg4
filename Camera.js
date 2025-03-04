@@ -1,7 +1,7 @@
 class Camera {
     constructor() {
         this.fov = 60;
-        this.eye = new Vector3([0, 0, 3]);       // Initial position
+        this.eye = new Vector3([0, 0, 5.3]);       // Initial position
         this.at = new Vector3([0, 0, -1]);      // Looking along the negative Z-axis
         this.up = new Vector3([0, 1, 0]);        // Up vector
         this.viewMatrix = new Matrix4();

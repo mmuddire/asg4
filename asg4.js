@@ -41,14 +41,6 @@ var FS = `
     varying vec3 n;
     varying vec4 worldPos;
 
-    uniform bool u_dirLightOn;
-    uniform bool u_pointLightOn;
-    uniform bool u_spotLightOn;
-    uniform vec3 u_spotLightPosition;
-    uniform vec3 u_spotLightDirection;
-    uniform float u_spotLightCutoff;
-    uniform float u_spotLightExponent;
-
     vec3 calcAmbient(){
         return u_ambientColor * u_Color;
     }
