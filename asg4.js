@@ -38,6 +38,12 @@ var FS = `
     uniform bool u_lightingOn;
     uniform vec3 u_lightColor;
 
+    uniform bool u_dirLightEnabled;
+    uniform bool u_spotLightEnabled;
+    uniform vec3 u_spotDirection;  
+    uniform float u_spotCosineCutoff; 
+    uniform float u_spotExponent;
+
     varying vec3 n;
     varying vec4 worldPos;
 
@@ -252,6 +258,7 @@ let isDragging = false;
 let g_lightingOn = true;
 let g_lastTime = 0;
 let lightAngle = 0;
+let g_sphereLight = true;
 const BASE_Y = -0.75; // Floor level
 const MAP_CENTER = 16; // Center offset for 32x32 grid
 
@@ -262,6 +269,9 @@ function addActionsForHtmlUI(){
 
     document.getElementById('lightingOff').onclick = () => { g_lightingOn = false; };
     document.getElementById('lightingOn').onclick = () => { g_lightingOn = true; };
+
+    document.getElementById('dirLightOn').onclick = () => { g_sphereLight = true; };
+    document.getElementById('dirLightOff').onclick = () => { g_sphereLight = false; };
 
     document.getElementById('lightX').addEventListener('input', updateLightPosition);
     document.getElementById('lightY').addEventListener('input', updateLightPosition);
@@ -450,7 +460,7 @@ function main() {
     pointLightSphere = new Sphere([1, 1, 1]);
     pointLightSphere.setScale(0.1, 0.1, 0.1);
     pointLightSphere.setTranslate(lightLocation);
-
+    
     models.push(pointLightSphere);
 
     vertexBuffer = initBuffer("a_Position", 3);
