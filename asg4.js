@@ -399,6 +399,8 @@ function draw() {
 
     lightLocation = lightRotation.multiplyVector3(lightLocation);
     gl.uniform3fv(u_lightLocation, lightLocation.elements);
+    
+    // Update the position of the pointLightSphere regardless of visibility
     pointLightSphere.setTranslate(lightLocation.elements[0], lightLocation.elements[1], lightLocation.elements[2]);
     
     // Update camera matrices
@@ -406,8 +408,13 @@ function draw() {
     gl.uniformMatrix4fv(u_ViewMatrix, false, g_camera.viewMatrix.elements);
     gl.uniformMatrix4fv(u_ProjectMatrix, false, g_camera.projectionMatrix.elements);
 
-    for(let m of models){
-        drawModel(m);
+    // Draw all models except pointLightSphere
+    for(let i = 0; i < models.length; i++) {
+        // Skip pointLightSphere if g_sphereLight is false
+        if(models[i] === pointLightSphere && !g_sphereLight) {
+            continue;
+        }
+        drawModel(models[i]);
     }
 
     requestAnimationFrame(draw);
